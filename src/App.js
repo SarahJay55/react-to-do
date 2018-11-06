@@ -4,17 +4,11 @@ import "./App.css";
 const Todo = ({ todo, index, completeTodo, removeTodo }) => (
   <div
     className="todo"
-    onClick={() => completeTodo(index)}
     style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
   >
     {todo.text}
-    <button
-      type="button"
-      className="removeTodo"
-      onClick={() => removeTodo(index)}
-    >
-      x
-    </button>
+    <button onClick={() => completeTodo(index)}>Complete</button>
+    <button onClick={() => removeTodo(index)}>x</button>
   </div>
 );
 
@@ -77,7 +71,7 @@ class App extends Component {
 
   removeTodo = index => {
     const newTodos = [...this.state.todos];
-    this.state.todos.splice(index, 1);
+    newTodos.splice(index, 1);
     this.setState({ todos: newTodos });
   };
 
